@@ -100,7 +100,7 @@ function getCurrentLocal() {
         )} min: ${Math.round(response.data.daily[i].temp.min)}`;
 
         let forecastCondition = document.querySelector(`#condition-${i}`);
-        forecastCondition.innerHTML = response.data.daily[i].weather[0].main;
+        forecastCondition.innerHTML = `<img src = "http://openweathermap.org/img/wn/${response.data.daily[i].weather[0].icon}@2x.png" alt = "${response.data.daily[i].weather[0].main}" width="35" height="35"> ${response.data.daily[i].weather[0].main}`;
 
         i++;
       }
@@ -155,7 +155,7 @@ function displayCity(event) {
         )} min: ${Math.round(response.data.daily[i].temp.min)}`;
 
         let forecastCondition = document.querySelector(`#condition-${i}`);
-        forecastCondition.innerHTML = response.data.daily[i].weather[0].main;
+        forecastCondition.innerHTML = `<img src = "http://openweathermap.org/img/wn/${response.data.daily[i].weather[0].icon}@2x.png" alt = "${response.data.daily[i].weather[0].main}" width="35" height="35"> ${response.data.daily[i].weather[0].main}`;
 
         i++;
       }
