@@ -18,14 +18,20 @@
     <div class="container whole-app">
       <div class="row app-header">
         <div class="col-8">
-          <h1>Tokyo</h1>
+          <h1 id="header-location">Tokyo</h1>
           <ul>
-            <li>17:00 Quarta-feira, nublado</li>
-            <li>Humidity: 40%, Wind: 5 km/h</li>
+            <li>
+              <span id="current-day-hour">17:00 Monday</span>,
+              <span id="header-condition">clouds</span>
+            </li>
+            <li id="header-extra-info">Humidity: 40%, Wind: 5 km/h</li>
           </ul>
         </div>
         <div class="col-4">
-          <h2>☁ 24 °C</h2>
+          <h2>
+            ☁ <strong id="header-temp">24</strong>
+            <span id="header-degree">°C</span>
+          </h2>
         </div>
       </div>
       <div class="forms-section">
