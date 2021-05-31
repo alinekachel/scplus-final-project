@@ -7,7 +7,6 @@ button {
   border-radius: 5px;
   border-color: #333333;
   max-width: 600px;
-  border: 1px solid #999999;
 }
 
 .app-header {
@@ -41,4 +40,49 @@ button {
   border: 1px solid #999999;
   background-color: #fff;
   color: #d4004d;
+}
+
+.form-control {
+  display: inline;
+  max-width: 200px;
+}
+.form-control:focus {
+  border-color: #d4004e70;
+  box-shadow: 0 0 0 0.25rem rgba(30, 30, 30, 0.25);
+}
+
+.btn-primary {
+  background-color: #d4004d;
+  border-color: #d4004d;
+}
+
+.btn-primary:hover {
+  background-color: #970339;
+  border-color: #970339;
+}
+
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  background-color: #970339;
+  border-color: #970339;
+  box-shadow: 0 0 0 0.25rem rgba(30, 30, 30, 0.25);
+}
+
+.btn-primary:active {
+  background-color: #970339;
+  border-color: #970339;
+  box-shadow: 0 0 0 0.25rem rgba(30, 30, 30, 0.25);
+}
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(30, 30, 30, 0.25);
+}
+
+.temp-button {
+  background-color: #fff;
+  border-color: #d4004d;
+  color: #333;
 }
