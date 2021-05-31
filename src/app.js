@@ -130,3 +130,39 @@ celButton.addEventListener("click", changeToCel);
 
 let currentLocal = document.querySelector("#current-place");
 currentLocal.addEventListener("click", getCurrentLocal);
+
+let hhhhhhhh = `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&units=metric&appid=cb9c7365e24a5b0ca2daf7074587f771`;
+
+console.log(axios.get(hhhhhhhh));
+
+//<div class="col-2" id="week-1">QUI</div>
+//       <div class="col-6" id="temps-1">max: 30 min: 20</div>
+//     <div class="col-4" id="condition-1">🌞 Ensolarado</div>
+
+function populateWeekDays() {
+  let today = new Date();
+  let week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekDay = today.getDay();
+
+  let i = 1;
+  while (i < 6) {
+    weekDay = weekDay + 1;
+    if (weekDay === 7) {
+      weekDay = 0;
+    }
+
+    let forecastWeek = document.querySelector(`#week-${i}`);
+    forecastWeek.innerHTML = week[weekDay];
+    i++;
+  }
+}
+
+populateWeekDays();
