@@ -15,44 +15,68 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
+    <div class="container whole-app">
+      <div class="row app-header">
+        <div class="col-8">
           <h1>Tokyo</h1>
           <ul>
             <li>17:00 Quarta-feira, nublado</li>
             <li>Humidity: 40%, Wind: 5 km/h</li>
           </ul>
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <h2>☁ 24 °C</h2>
         </div>
       </div>
-      <form>
-        <label for="citySearch"></label>
-        <input type="text" name="citySearch" id="city-search" required />
-        <input type="submit" value="Search" id="search-button" />
-      </form>
+      <div class="forms-section">
+        <form>
+          <label for="citySearch"></label>
+          <input type="text" name="citySearch" id="city-search" required />
+          <input type="submit" value="Search" id="search-button" />
+        </form>
 
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-primary" id="to-celsius">
-          °C
-        </button>
-        <button type="button" class="btn btn-primary" id="to-fahrenheit">
-          °F
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary" id="to-celsius">
+            °C
+          </button>
+          <button type="button" class="btn btn-primary" id="to-fahrenheit">
+            °F
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn btn-outline-primary menu"
+          id="current-place"
+        >
+          My current place
         </button>
       </div>
-      <button
-        type="button"
-        class="btn btn-outline-primary menu"
-        id="current-place"
-      >
-        My current place
-      </button>
-      <div class="row">
-        <div class="col-2">QUI</div>
-        <div class="col-4">max: 30 <br />min: 20</div>
-        <div class="col-6">🌞 Ensolarado</div>
+      <div class="forecast">
+        <div class="row other-days">
+          <div class="col-2">QUI</div>
+          <div class="col-6">max: 30 <br />min: 20</div>
+          <div class="col-4">🌞 Ensolarado</div>
+        </div>
+        <div class="row other-days">
+          <div class="col-2">QUI</div>
+          <div class="col-6">max: 30 <br />min: 20</div>
+          <div class="col-4">🌞 Ensolarado</div>
+        </div>
+        <div class="row other-days">
+          <div class="col-2">QUI</div>
+          <div class="col-6">max: 30 <br />min: 20</div>
+          <div class="col-4">🌞 Ensolarado</div>
+        </div>
+        <div class="row other-days">
+          <div class="col-2">QUI</div>
+          <div class="col-6">max: 30 <br />min: 20</div>
+          <div class="col-4">🌞 Ensolarado</div>
+        </div>
+        <div class="row other-days">
+          <div class="col-2">QUI</div>
+          <div class="col-6">max: 30 <br />min: 20</div>
+          <div class="col-4">🌞 Ensolarado</div>
+        </div>
       </div>
     </div>
   </body>

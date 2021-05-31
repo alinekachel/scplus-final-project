@@ -2,3 +2,43 @@ form,
 button {
   display: inline;
 }
+
+.whole-app {
+  border-radius: 5px;
+  border-color: #333333;
+  max-width: 600px;
+  border: 1px solid #999999;
+}
+
+.app-header {
+  border-width: 1px;
+  border-radius: 18px;
+  background-color: #d4004d;
+  color: #fff;
+  padding: 15px;
+  margin: 20px 10px;
+}
+
+.forms-section {
+  padding: 15px;
+  margin: 10px;
+  border-radius: 18px;
+  border: 1px solid #999999;
+}
+
+.forecast {
+  padding: 15px;
+  margin: 10px;
+  border-radius: 18px;
+  border: 1px solid #999999;
+  background-color: #d4004d;
+}
+
+.other-days {
+  padding: 5px;
+  margin: 7px;
+  border-radius: 18px;
+  border: 1px solid #999999;
+  background-color: #fff;
+  color: #d4004d;
+}
