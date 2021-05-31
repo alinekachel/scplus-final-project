@@ -69,7 +69,7 @@ function getCurrentLocal() {
 
     let latLonCall = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${degreeUnit}&appid=${apiKey}`;
     let dailyForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${degreeUnit}&exclude=hourly,minutely&appid=${apiKey}`;
-    console.log(dailyForecastUrl);
+
     axios.get(latLonCall).then(function (response) {
       let displayedCity = document.querySelector("#header-location");
       displayedCity.innerHTML = response.data.name;
@@ -139,6 +139,29 @@ function displayCity(event) {
 
     let extraInfo = document.querySelector("#header-extra-info");
     extraInfo.innerHTML = `Humidity: ${humidity}%, Wind: ${windSpeed} km/h`;
+
+    let lat = response.data.coord.lat;
+    let lon = response.data.coord.lon;
+    let dailyForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${degreeUnit}&exclude=hourly,minutely&appid=${apiKey}`;
+    axios.get(dailyForecastUrl).then(function (response) {
+      console.log(response);
+
+      let dailyForecast = 0;
+      let i = 1;
+      while (i < 6) {
+        dailyForecast = dailyForecast + 1;
+
+        let forecastTemps = document.querySelector(`#temps-${i}`);
+        forecastTemps.innerHTML = `max: ${Math.round(
+          response.data.daily[i].temp.max
+        )} min: ${Math.round(response.data.daily[i].temp.min)}`;
+
+        let forecastCondition = document.querySelector(`#condition-${i}`);
+        forecastCondition.innerHTML = response.data.daily[i].weather[0].main;
+
+        i++;
+      }
+    });
   });
 }
 
