@@ -5,6 +5,28 @@ function convertMinutes(inputMinutes) {
   return inputMinutes;
 }
 
+function changeToFah() {
+  let degree = document.querySelector("#header-degree");
+  let headerTemp = document.querySelector("#header-temp");
+  if (degree.innerHTML === "°C") {
+    degree.innerHTML = "°F";
+    let temperature = headerTemp.innerHTML;
+    temperature = (temperature * 9) / 5 + 32;
+    headerTemp.innerHTML = Math.round(temperature);
+  }
+}
+
+function changeToCel() {
+  let degree = document.querySelector("#header-degree");
+  let headerTemp = document.querySelector("#header-temp");
+  if (degree.innerHTML === "°F") {
+    degree.innerHTML = "°C";
+    let temperature = headerTemp.innerHTML;
+    temperature = ((temperature - 32) * 5) / 9;
+    headerTemp.innerHTML = Math.round(temperature);
+  }
+}
+
 function getCurrentLocal() {
   navigator.geolocation.getCurrentPosition(function (position) {
     console.log(position);
@@ -100,3 +122,8 @@ hourSite.innerHTML = `${today.getHours()}:${convertMinutes(
 
 let citySearch = document.querySelector("#search-city-form");
 citySearch.addEventListener("submit", displayCity);
+
+let celButton = document.querySelector("#to-celsius");
+let fahButton = document.querySelector("#to-fahrenheit");
+fahButton.addEventListener("click", changeToFah);
+celButton.addEventListener("click", changeToCel);
