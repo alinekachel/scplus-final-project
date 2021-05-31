@@ -1,3 +1,5 @@
+//Known issue to be fixed: when changing between C/F, the daily forecast doesn't change accordingly.
+
 function convertMinutes(inputMinutes) {
   if (inputMinutes < 10) {
     inputMinutes = `0${inputMinutes}`;
@@ -87,8 +89,6 @@ function getCurrentLocal() {
       extraInfo.innerHTML = `Humidity: ${humidity}%, Wind: ${windSpeed} km/h`;
     });
     axios.get(dailyForecastUrl).then(function (response) {
-      console.log(response);
-
       let dailyForecast = 0;
       let i = 1;
       while (i < 6) {
@@ -144,8 +144,6 @@ function displayCity(event) {
     let lon = response.data.coord.lon;
     let dailyForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${degreeUnit}&exclude=hourly,minutely&appid=${apiKey}`;
     axios.get(dailyForecastUrl).then(function (response) {
-      console.log(response);
-
       let dailyForecast = 0;
       let i = 1;
       while (i < 6) {
@@ -195,10 +193,3 @@ let currentLocal = document.querySelector("#current-place");
 currentLocal.addEventListener("click", getCurrentLocal);
 
 populateWeekDays();
-
-//let hhhhhhhh = `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&units=metric&appid=cb9c7365e24a5b0ca2daf7074587f771`;
-
-//console.log(axios.get(hhhhhhhh));
-
-//       <div class="col-6" id="temps-1">max: 30 min: 20</div>
-//     <div class="col-4" id="condition-1">🌞 Ensolarado</div>
