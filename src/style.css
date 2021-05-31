@@ -97,3 +97,8 @@ ul {
   border-color: #d4004d;
   color: #333;
 }
+
+.btn-group {
+  margin-left: 12px;
+  margin-right: 12px;
+}

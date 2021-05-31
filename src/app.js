@@ -127,3 +127,6 @@ let celButton = document.querySelector("#to-celsius");
 let fahButton = document.querySelector("#to-fahrenheit");
 fahButton.addEventListener("click", changeToFah);
 celButton.addEventListener("click", changeToCel);
+
+let currentLocal = document.querySelector("#current-place");
+currentLocal.addEventListener("click", getCurrentLocal);
