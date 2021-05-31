@@ -87,6 +87,9 @@ function getCurrentLocal() {
 
       let extraInfo = document.querySelector("#header-extra-info");
       extraInfo.innerHTML = `Humidity: ${humidity}%, Wind: ${windSpeed} km/h`;
+
+      let headerIcon = document.querySelector("#header-icon");
+      headerIcon.innerHTML = `<img src = "http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt = "${response.data.weather[0].main}" width="50" height="50"> ${response.data.weather[0].main}`;
     });
     axios.get(dailyForecastUrl).then(function (response) {
       let dailyForecast = 0;
