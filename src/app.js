@@ -5,26 +5,33 @@ function convertMinutes(inputMinutes) {
   return inputMinutes;
 }
 
+function convertCelsius(temperature) {
+  temperature = Math.round(((temperature - 32) * 5) / 9);
+  return temperature;
+}
+
+function convertFahrenheit(temperature) {
+  temperature = Math.round((temperature * 9) / 5 + 32);
+  return temperature;
+}
+
 function changeToFah() {
   let degree = document.querySelector("#header-degree");
   let headerTemp = document.querySelector("#header-temp");
   if (degree.innerHTML === "°C") {
     degree.innerHTML = "°F";
     let temperature = headerTemp.innerHTML;
-    temperature = (temperature * 9) / 5 + 32;
-    headerTemp.innerHTML = Math.round(temperature);
+    headerTemp.innerHTML = convertFahrenheit(temperature);
 
     let i = 1;
     while (i < 6) {
       let forecastMax = document.querySelector(`#max-${i}`);
       let tempMax = forecastMax.innerHTML;
-      tempMax = (tempMax * 9) / 5 + 32;
-      forecastMax.innerHTML = Math.round(tempMax);
+      forecastMax.innerHTML = convertFahrenheit(tempMax);
 
       let forecastMin = document.querySelector(`#min-${i}`);
       let tempMin = forecastMin.innerHTML;
-      tempMin = (tempMin * 9) / 5 + 32;
-      forecastMin.innerHTML = Math.round(tempMin);
+      forecastMin.innerHTML = convertFahrenheit(tempMin);
 
       i++;
     }
@@ -37,20 +44,17 @@ function changeToCel() {
   if (degree.innerHTML === "°F") {
     degree.innerHTML = "°C";
     let temperature = headerTemp.innerHTML;
-    temperature = ((temperature - 32) * 5) / 9;
-    headerTemp.innerHTML = Math.round(temperature);
+    headerTemp.innerHTML = convertCelsius(temperature);
 
     let i = 1;
     while (i < 6) {
       let forecastMax = document.querySelector(`#max-${i}`);
       let tempMax = forecastMax.innerHTML;
-      tempMax = ((tempMax - 32) * 5) / 9;
-      forecastMax.innerHTML = Math.round(tempMax);
+      forecastMax.innerHTML = convertCelsius(tempMax);
 
       let forecastMin = document.querySelector(`#min-${i}`);
       let tempMin = forecastMin.innerHTML;
-      tempMin = ((tempMin - 32) * 5) / 9;
-      forecastMin.innerHTML = Math.round(tempMin);
+      forecastMin.innerHTML = convertCelsius(tempMin);
 
       i++;
     }
