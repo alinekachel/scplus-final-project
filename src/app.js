@@ -190,15 +190,13 @@ function displayCity(event) {
     let lon = response.data.coord.lon;
     let dailyForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${degreeUnit}&exclude=hourly,minutely&appid=${apiKey}`;
     axios.get(dailyForecastUrl).then(function (response) {
-      let dailyForecast = 0;
       let i = 1;
       while (i < 6) {
-        dailyForecast = dailyForecast + 1;
+        let forecastMax = document.querySelector(`#max-${i}`);
+        forecastMax.innerHTML = Math.round(response.data.daily[i].temp.max);
 
-        let forecastTemps = document.querySelector(`#temps-${i}`);
-        forecastTemps.innerHTML = `max: ${Math.round(
-          response.data.daily[i].temp.max
-        )} min: ${Math.round(response.data.daily[i].temp.min)}`;
+        let forecastMin = document.querySelector(`#min-${i}`);
+        forecastMin.innerHTML = Math.round(response.data.daily[i].temp.min);
 
         let forecastCondition = document.querySelector(`#condition-${i}`);
         forecastCondition.innerHTML = `<img src = "http://openweathermap.org/img/wn/${response.data.daily[i].weather[0].icon}@2x.png" alt = "${response.data.daily[i].weather[0].main}" width="35" height="35"> ${response.data.daily[i].weather[0].main}`;
