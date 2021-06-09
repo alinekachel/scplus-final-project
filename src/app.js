@@ -1,9 +1,12 @@
+//To avoid time displaying as 12:1
 function convertMinutes(inputMinutes) {
   if (inputMinutes < 10) {
     inputMinutes = `0${inputMinutes}`;
   }
   return inputMinutes;
 }
+
+//Celsius/Fahrenheit convertion related functions
 
 function convertCelsius(temperature) {
   temperature = Math.round(((temperature - 32) * 5) / 9);
@@ -60,6 +63,8 @@ function changeToCel() {
     }
   }
 }
+
+//Populates the days of the week according to current date
 function populateWeekDays() {
   let today = new Date();
   let week = [
@@ -71,6 +76,7 @@ function populateWeekDays() {
     "Friday",
     "Saturday",
   ];
+
   let weekDay = today.getDay();
 
   let i = 1;
@@ -86,6 +92,7 @@ function populateWeekDays() {
   }
 }
 
+//Gets current local and populates the current temperature and forecast accordingly
 function getCurrentLocal() {
   navigator.geolocation.getCurrentPosition(function (position) {
     let lat = position.coords.latitude;
@@ -104,6 +111,7 @@ function getCurrentLocal() {
     let latLonCall = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${degreeUnit}&appid=${apiKey}`;
     let dailyForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${degreeUnit}&exclude=hourly,minutely&appid=${apiKey}`;
 
+    //Getting current condition weather info
     axios.get(latLonCall).then(function (response) {
       let displayedCity = document.querySelector("#header-location");
       displayedCity.innerHTML = response.data.name;
@@ -123,6 +131,8 @@ function getCurrentLocal() {
       let headerIcon = document.querySelector("#header-icon");
       headerIcon.innerHTML = `<img src = "http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt = "${response.data.weather[0].main}" width="50" height="50"> ${response.data.weather[0].main}`;
     });
+
+    //Getting forecast info
     axios.get(dailyForecastUrl).then(function (response) {
       let i = 1;
       while (i < 6) {
@@ -141,6 +151,7 @@ function getCurrentLocal() {
   });
 }
 
+//Searchs inserted city in the API and shows its data
 function displayCity(event) {
   event.preventDefault();
   let degreeUnit = "metric";
@@ -157,6 +168,7 @@ function displayCity(event) {
 
   let cityCall = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${degreeUnit}&appid=${apiKey}`;
 
+  //Gets current weather info
   axios.get(cityCall).then(function (response) {
     let displayedCity = document.querySelector("#header-location");
     displayedCity.innerHTML = response.data.name;
@@ -173,6 +185,7 @@ function displayCity(event) {
     let extraInfo = document.querySelector("#header-extra-info");
     extraInfo.innerHTML = `Humidity: ${humidity}%, Wind: ${windSpeed} km/h`;
 
+    //Gets forecast info
     let lat = response.data.coord.lat;
     let lon = response.data.coord.lon;
     let dailyForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${degreeUnit}&exclude=hourly,minutely&appid=${apiKey}`;
